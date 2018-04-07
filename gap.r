@@ -43,7 +43,7 @@ xlabs2 <- c("Manufacturing",
            "Financial & insurance"
 )
 
-p <- gap %>%
+gap %>%
   dplyr::mutate(
     # EmployerSize = factor(
     #   ifelse(EmployerSize == "Not Provided", NA, EmployerSize),
@@ -55,9 +55,9 @@ p <- gap %>%
   dplyr::rename(var = sector) %>%
       dplyr::group_by(var) %>%
       dplyr::summarise(
-        `Hourly rate` = mean(DiffMeanHourlyPercent),
+        `Hourly rate (mean)` = mean(DiffMeanHourlyPercent),
         # median = median(DiffMeanHourlyPercent),
-        `Bonus payment` = mean(DiffMeanBonusPercent)
+        `Bonus payment (mean)` = mean(DiffMeanBonusPercent)
         # median_bonus = median(DiffMedianBonusPercent)
         ) %>%
   reshape2::melt(id="var") %>%
